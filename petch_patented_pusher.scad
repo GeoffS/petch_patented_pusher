@@ -1,5 +1,6 @@
 include <../OpenSCAD_Lib/MakeInclude.scad>
 include <../OpenSCAD_Lib/torus.scad>
+include <../OpenSCAD_Lib/chamferedCylinders.scad>
 
 makeTip2Pusher = false;
 
@@ -26,7 +27,9 @@ module tip2Pusher()
 		}
 		tcu([-200, -200, -400], 400);
 	}
-	tcy([0,0,-insertZ], d=tipID, h=insertZ+1);
+
+	//tcy([0,0,-insertZ], d=tipID, h=insertZ+1);
+	mirror([0,0,1]) translate([0,0,-1]) simpleChamferedCylinder(d=tipID, h=insertZ+1, cz=3);
 }
 
 module clip(d=0)
