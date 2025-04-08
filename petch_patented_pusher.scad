@@ -1,15 +1,37 @@
-include <../OpenSCADdesigns/MakeInclude.scad>
+include <../OpenSCAD_Lib/MakeInclude.scad>
+include <../OpenSCAD_Lib/torus.scad>
 
 makeTip2Pusher = false;
 
+tipOD = 40;
+tipID = 35;
+
+insertZ = 30;
+bottomRadius = 10;
+topDiameter = tipOD * 0.6;
+topCtrZ = 40;
+topPrintPlateAngle = 50;
+
 module tip2Pusher()
 {
-	
+	difference()
+	{
+		hull()
+		{
+			tsp([0,0,topCtrZ], d=topDiameter);
+
+			bottomTranslation = tipOD/2 - (bottomRadius);
+			echo(str("bottomTranslation = ", bottomTranslation));
+			torus2a(radius=bottomRadius, translation=bottomTranslation); //tipOD-(2*bottomRadius));
+		}
+		tcu([-200, -200, -400], 400);
+	}
+	tcy([0,0,-insertZ], d=tipID, h=insertZ+1);
 }
 
 module clip(d=0)
 {
-	//tc([-200, -400-d, -10], 400);
+	// tc([-200, -400-d, -200], 400);
 }
 
 if(developmentRender)
