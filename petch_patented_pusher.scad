@@ -26,7 +26,7 @@ module tip2Pusher()
 
 			bottomTranslation = tipOD/2 - (bottomRadius);
 			echo(str("bottomTranslation = ", bottomTranslation));
-			torus2(radius=bottomRadius, translation=bottomTranslation); //tipOD-(2*bottomRadius));
+			torus2(radius=bottomRadius, translation=bottomTranslation);
 		}
 
 		// Trim-off stuff below the top of the tip:
