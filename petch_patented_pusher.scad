@@ -9,9 +9,12 @@ tipID = 35;
 
 insertZ = 30;
 bottomRadius = 20;
-topDiameter = tipOD * 0.6;
-topCtrZ = 30;
-topPrintPlateAngle = 50;
+topDiameter = tipOD * 0.65;
+topCtrZ = 25;
+topPrintPlateAngle = 40;
+
+topPrintPlateTrimZ = topCtrZ + (topDiameter/2 * sin(90-topPrintPlateAngle));
+echo(str("topPrintPlateTrimZ = ", topPrintPlateTrimZ));
 
 module tip2Pusher()
 {
@@ -25,10 +28,14 @@ module tip2Pusher()
 			echo(str("bottomTranslation = ", bottomTranslation));
 			torus2(radius=bottomRadius, translation=bottomTranslation); //tipOD-(2*bottomRadius));
 		}
+
+		// Trim-off stuff below the top of the tip:
 		tcu([-200, -200, -400], 400);
+
+		// Trim the top for printability:
+		tcu([-200, -200,topPrintPlateTrimZ], 400);
 	}
 
-	//tcy([0,0,-insertZ], d=tipID, h=insertZ+1);
 	mirror([0,0,1]) translate([0,0,-1]) simpleChamferedCylinder(d=tipID, h=insertZ+1, cz=3);
 }
 
@@ -43,5 +50,5 @@ if(developmentRender)
 }
 else
 {
-	if(makeTip2Pusher) tip2Pusher();
+	if(makeTip2Pusher) mirror([0,0,1]) tip2Pusher();
 }
