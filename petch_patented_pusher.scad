@@ -8,9 +8,9 @@ tipOD = 40;
 tipID = 35;
 
 insertZ = 30;
-bottomRadius = 10;
+bottomRadius = 20;
 topDiameter = tipOD * 0.6;
-topCtrZ = 40;
+topCtrZ = 30;
 topPrintPlateAngle = 50;
 
 module tip2Pusher()
@@ -23,7 +23,7 @@ module tip2Pusher()
 
 			bottomTranslation = tipOD/2 - (bottomRadius);
 			echo(str("bottomTranslation = ", bottomTranslation));
-			torus2a(radius=bottomRadius, translation=bottomTranslation); //tipOD-(2*bottomRadius));
+			torus2(radius=bottomRadius, translation=bottomTranslation); //tipOD-(2*bottomRadius));
 		}
 		tcu([-200, -200, -400], 400);
 	}
