@@ -1,6 +1,8 @@
 include <../OpenSCADdesigns/MakeInclude.scad>
 
-module itemModule()
+makeTip2Pusher = false;
+
+module tip2Pusher()
 {
 	
 }
@@ -12,9 +14,9 @@ module clip(d=0)
 
 if(developmentRender)
 {
-	display() itemModule();
+	display() tip2Pusher();
 }
 else
 {
-	itemModule();
+	if(makeTip2Pusher) tip2Pusher();
 }
