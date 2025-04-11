@@ -7,10 +7,10 @@ makeTip2Pusher = false;
 tipOD = 40;
 tipID = 35;
 
-insertZ = 30;
+insertZ = 25;
 bottomRadius = 20;
-topDiameter = tipOD * 0.65;
-topCtrZ = 25;
+topDiameter = tipOD * 0.75;
+topCtrZ = 12;
 topPrintPlateAngle = 40;
 
 topPrintPlateTrimZ = topCtrZ + (topDiameter/2 * sin(90-topPrintPlateAngle));
