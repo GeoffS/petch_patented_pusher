@@ -13,7 +13,8 @@ module tip2Pusher()
 
 	insertZ = 25;
 	bottomRadius = 18;
-	topDiameter = tipOD * 0.72;
+	topDiameter = 27; //tipOD * 0.72;
+	echo(str("#2 topDiameter = ", topDiameter));
 	topCtrZ = 16;
 	topPrintPlateAngle = 40;
 
@@ -25,7 +26,21 @@ module tip2Pusher()
 
 module section3Pusher()
 {
+	// Measured Carbon 900 base
+	tipOD = 41.5;
+	tipID = 36.6;
 
+	insertZ = 25;
+	bottomRadius = 18;
+	topDiameter = 27; //tipOD * 0.72;
+	echo(str("#3 topDiameter = ", topDiameter));
+	topCtrZ = 20.8; // approx. the same cone-angle as the #2 tip.
+	topPrintPlateAngle = 40;
+
+	topPrintPlateTrimZ = topCtrZ + (topDiameter/2 * sin(90-topPrintPlateAngle));
+	echo(str("topPrintPlateTrimZ = ", topPrintPlateTrimZ));
+
+	basePusher(tipOD, tipID, insertZ, bottomRadius, topDiameter, topCtrZ, topPrintPlateAngle, topPrintPlateTrimZ);
 }
 
 module basePusher(tipOD, tipID, insertZ, bottomRadius, topDiameter, topCtrZ, topPrintPlateAngle, topPrintPlateTrimZ)
@@ -58,7 +73,8 @@ module clip(d=0)
 
 if(developmentRender)
 {
-	display() tip2Pusher();
+	display() translate([-50,0,0]) tip2Pusher();
+	display() section3Pusher();
 }
 else
 {
