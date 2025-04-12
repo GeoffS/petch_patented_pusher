@@ -4,13 +4,14 @@ include <../OpenSCAD_Lib/chamferedCylinders.scad>
 
 makeTip2Pusher = false;
 
-tipOD = 40;
-tipID = 35;
+ // Measured Carbon 600
+tipOD = 37.4;
+tipID = 32.6;
 
 insertZ = 25;
-bottomRadius = 20;
-topDiameter = tipOD * 0.75;
-topCtrZ = 12;
+bottomRadius = 18;
+topDiameter = tipOD * 0.72;
+topCtrZ = 16;
 topPrintPlateAngle = 40;
 
 topPrintPlateTrimZ = topCtrZ + (topDiameter/2 * sin(90-topPrintPlateAngle));
