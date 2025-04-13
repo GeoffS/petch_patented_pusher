@@ -9,7 +9,7 @@ module tip2Pusher()
 {
 	// Measured Carbon 600
 	tipOD = 37.4;
-	tipID = 32.6;
+	tipID = 33.1;
 
 	insertZ = 25;
 	bottomRadius = 18;
@@ -63,7 +63,24 @@ module basePusher(tipOD, tipID, insertZ, bottomRadius, topDiameter, topCtrZ, top
 		tcu([-200, -200,topPrintPlateTrimZ], 400);
 	}
 
-	mirror([0,0,1]) translate([0,0,-1]) simpleChamferedCylinder(d=tipID, h=insertZ+1, cz=3);
+	// The insert into the mast-section:
+	insertCZ = 3;
+	bumpDia = 2*insertCZ;
+	mirror([0,0,1]) 
+	{
+		translate([0,0,-1]) simpleChamferedCylinder(d=tipID-0.8, h=insertZ+1, cz=insertCZ);
+
+		for (a=[0:30:359]) 
+		{
+			// rotate([0,0,a]) translate([tipID/2-bumpDia/2+0.2,0,0]) simpleChamferedCylinder(d=bumpDia, h=insertZ, cz=insertCZ);
+			rotate([0,0,a]) translate([tipID/2-bumpDia/2,0,0]) hull()
+			{
+				translate([0.2,0,0]) cylinder(d=bumpDia, h=insertZ-insertCZ);
+				// MAGIC NUMBER: 0.5
+				translate([-0.5,0,insertZ-insertCZ]) cylinder(d1=bumpDia, d2=0, h=insertCZ);
+			}
+		}
+	}
 }
 
 module clip(d=0)
