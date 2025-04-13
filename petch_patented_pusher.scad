@@ -28,7 +28,7 @@ module section3Pusher()
 {
 	// Measured Carbon 900 base
 	tipOD = 42.0;
-	tipID = 37.1;
+	tipID = 36.9;
 
 	insertZ = 25;
 	bottomRadius = 18;
