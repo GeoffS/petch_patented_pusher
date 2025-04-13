@@ -8,7 +8,7 @@ makeSection3 = false;
 module tip2Pusher()
 {
 	// Measured Carbon 600
-	tipOD = 37.4;
+	tipOD = 38.0;
 	tipID = 33.1;
 
 	insertZ = 25;
@@ -27,8 +27,8 @@ module tip2Pusher()
 module section3Pusher()
 {
 	// Measured Carbon 900 base
-	tipOD = 41.5;
-	tipID = 36.6;
+	tipOD = 42.0;
+	tipID = 37.1;
 
 	insertZ = 25;
 	bottomRadius = 18;
